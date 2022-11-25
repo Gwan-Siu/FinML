@@ -1,0 +1,10 @@
+[3498703:MainThread](2022-11-24 14:56:09,070) INFO - qlib.Initialization - [config.py:416] - default_conf: client.
+[3498703:MainThread](2022-11-24 14:56:09,160) INFO - qlib.workflow - [expm.py:40] - experiment manager uri is at file:/home/gwan/Documents/research/quant/ML_Finance/mlruns
+[3498703:MainThread](2022-11-24 14:56:09,161) INFO - qlib.Initialization - [__init__.py:74] - qlib successfully initialized based on client settings.
+[3498703:MainThread](2022-11-24 14:56:09,161) INFO - qlib.Initialization - [__init__.py:76] - data_path={'__DEFAULT_FREQ': PosixPath('/home/gwan/Documents/research/quant/qlib/dataset/cn_data_v2/qlib_data')}
+[3498703:MainThread](2022-11-24 14:56:09,161) ERROR - qlib.workflow - [utils.py:41] - An exception has been raised[KeyError: 'handler'].
+  File "/home/gwan/Documents/research/quant/ML_Finance/main.py", line 45, in <module>
+    main()
+  File "/home/gwan/Documents/research/quant/ML_Finance/main.py", line 39, in main
+    handler = opt['handler']
+KeyError: 'handler'

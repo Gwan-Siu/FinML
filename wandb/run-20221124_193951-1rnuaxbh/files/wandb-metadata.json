@@ -1,0 +1,163 @@
+{
+    "os": "Linux-5.15.0-52-generic-x86_64-with-glibc2.17",
+    "python": "3.8.15",
+    "heartbeatAt": "2022-11-24T11:39:52.147790",
+    "startedAt": "2022-11-24T11:39:51.308843",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home/gwan/Documents/research/quant/ML_Finance/main.py",
+    "codePath": "main.py",
+    "host": "gwan-PC",
+    "username": "gwan",
+    "executable": "/home/gwan/anaconda3/envs/py38quant/bin/python3.8",
+    "cpu_count": 16,
+    "cpu_count_logical": 24,
+    "cpu_freq": {
+        "current": 3341.4329583333333,
+        "min": 800.0,
+        "max": 5666.666666666667
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3200.0,
+            "min": 800.0,
+            "max": 6500.0
+        },
+        {
+            "current": 3200.0,
+            "min": 800.0,
+            "max": 6500.0
+        },
+        {
+            "current": 3200.0,
+            "min": 800.0,
+            "max": 6500.0
+        },
+        {
+            "current": 3200.0,
+            "min": 800.0,
+            "max": 6500.0
+        },
+        {
+            "current": 3200.0,
+            "min": 800.0,
+            "max": 6500.0
+        },
+        {
+            "current": 3200.0,
+            "min": 800.0,
+            "max": 6500.0
+        },
+        {
+            "current": 3200.0,
+            "min": 800.0,
+            "max": 6500.0
+        },
+        {
+            "current": 3200.0,
+            "min": 800.0,
+            "max": 6500.0
+        },
+        {
+            "current": 4885.181,
+            "min": 800.0,
+            "max": 6700.0
+        },
+        {
+            "current": 3200.0,
+            "min": 800.0,
+            "max": 6700.0
+        },
+        {
+            "current": 4881.114,
+            "min": 800.0,
+            "max": 6700.0
+        },
+        {
+            "current": 3200.0,
+            "min": 800.0,
+            "max": 6700.0
+        },
+        {
+            "current": 3200.0,
+            "min": 800.0,
+            "max": 6500.0
+        },
+        {
+            "current": 3200.0,
+            "min": 800.0,
+            "max": 6500.0
+        },
+        {
+            "current": 3200.0,
+            "min": 800.0,
+            "max": 6500.0
+        },
+        {
+            "current": 3200.0,
+            "min": 800.0,
+            "max": 6500.0
+        },
+        {
+            "current": 3200.0,
+            "min": 800.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3200.0,
+            "min": 800.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3200.0,
+            "min": 800.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3200.0,
+            "min": 800.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3200.0,
+            "min": 800.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3200.0,
+            "min": 800.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3200.0,
+            "min": 800.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3200.0,
+            "min": 800.0,
+            "max": 3900.0
+        }
+    ],
+    "disk": {
+        "total": 1832.2072448730469,
+        "used": 905.1333198547363
+    },
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "gpu_count": 2,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 3090",
+            "memory_total": 25438322688
+        },
+        {
+            "name": "NVIDIA GeForce RTX 3090",
+            "memory_total": 25447170048
+        }
+    ],
+    "memory": {
+        "total": 62.61840057373047
+    }
+}

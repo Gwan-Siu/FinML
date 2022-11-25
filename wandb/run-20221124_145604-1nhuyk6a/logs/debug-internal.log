@@ -1,0 +1,165 @@
+2022-11-24 14:56:04,276 INFO    StreamThr :3498740 [internal.py:wandb_internal():88] W&B internal server running at pid: 3498740, started at: 2022-11-24 14:56:04.275966
+2022-11-24 14:56:04,278 DEBUG   HandlerThread:3498740 [handler.py:handle_request():139] handle_request: status
+2022-11-24 14:56:04,279 DEBUG   SenderThread:3498740 [sender.py:send_request():317] send_request: status
+2022-11-24 14:56:04,280 INFO    WriterThread:3498740 [datastore.py:open_for_write():75] open: /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/run-1nhuyk6a.wandb
+2022-11-24 14:56:04,280 DEBUG   SenderThread:3498740 [sender.py:send():303] send: header
+2022-11-24 14:56:04,280 DEBUG   SenderThread:3498740 [sender.py:send():303] send: run
+2022-11-24 14:56:04,911 DEBUG   HandlerThread:3498740 [handler.py:handle_request():139] handle_request: check_version
+2022-11-24 14:56:04,921 INFO    SenderThread:3498740 [dir_watcher.py:__init__():216] watching files in: /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/files
+2022-11-24 14:56:04,921 INFO    SenderThread:3498740 [sender.py:_start_run_threads():928] run started: 1nhuyk6a with start time 1669272964.274481
+2022-11-24 14:56:04,921 DEBUG   SenderThread:3498740 [sender.py:send():303] send: summary
+2022-11-24 14:56:04,921 INFO    SenderThread:3498740 [sender.py:_save_file():1171] saving file wandb-summary.json with policy end
+2022-11-24 14:56:04,922 DEBUG   SenderThread:3498740 [sender.py:send_request():317] send_request: check_version
+2022-11-24 14:56:05,388 DEBUG   HandlerThread:3498740 [handler.py:handle_request():139] handle_request: run_start
+2022-11-24 14:56:05,401 DEBUG   HandlerThread:3498740 [system_info.py:__init__():31] System info init
+2022-11-24 14:56:05,401 DEBUG   HandlerThread:3498740 [system_info.py:__init__():46] System info init done
+2022-11-24 14:56:05,401 INFO    HandlerThread:3498740 [system_monitor.py:start():150] Starting system monitor
+2022-11-24 14:56:05,402 INFO    SystemMonitor:3498740 [system_monitor.py:_start():116] Starting system asset monitoring threads
+2022-11-24 14:56:05,402 INFO    HandlerThread:3498740 [system_monitor.py:probe():168] Collecting system info
+2022-11-24 14:56:05,403 INFO    SystemMonitor:3498740 [interfaces.py:start():168] Started cpu
+2022-11-24 14:56:05,403 INFO    SystemMonitor:3498740 [interfaces.py:start():168] Started disk
+2022-11-24 14:56:05,404 INFO    SystemMonitor:3498740 [interfaces.py:start():168] Started gpu
+2022-11-24 14:56:05,405 INFO    SystemMonitor:3498740 [interfaces.py:start():168] Started memory
+2022-11-24 14:56:05,406 INFO    SystemMonitor:3498740 [interfaces.py:start():168] Started network
+2022-11-24 14:56:05,456 DEBUG   HandlerThread:3498740 [system_info.py:probe():195] Probing system
+2022-11-24 14:56:05,462 DEBUG   HandlerThread:3498740 [git.py:repo():40] git repository is invalid
+2022-11-24 14:56:05,462 DEBUG   HandlerThread:3498740 [system_info.py:probe():241] Probing system done
+2022-11-24 14:56:05,462 DEBUG   HandlerThread:3498740 [system_monitor.py:probe():177] {'os': 'Linux-5.15.0-52-generic-x86_64-with-glibc2.17', 'python': '3.8.15', 'heartbeatAt': '2022-11-24T06:56:05.456299', 'startedAt': '2022-11-24T06:56:04.254491', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/home/gwan/Documents/research/quant/ML_Finance/main.py', 'codePath': 'main.py', 'host': 'gwan-PC', 'username': 'gwan', 'executable': '/home/gwan/anaconda3/envs/py38quant/bin/python3.8', 'cpu_count': 16, 'cpu_count_logical': 24, 'cpu_freq': {'current': 2930.7027916666666, 'min': 800.0, 'max': 5666.666666666667}, 'cpu_freq_per_core': [{'current': 3200.0, 'min': 800.0, 'max': 6500.0}, {'current': 3200.0, 'min': 800.0, 'max': 6500.0}, {'current': 3200.0, 'min': 800.0, 'max': 6500.0}, {'current': 3200.0, 'min': 800.0, 'max': 6500.0}, {'current': 3200.0, 'min': 800.0, 'max': 6500.0}, {'current': 3200.0, 'min': 800.0, 'max': 6500.0}, {'current': 1888.953, 'min': 800.0, 'max': 6500.0}, {'current': 3200.0, 'min': 800.0, 'max': 6500.0}, {'current': 3200.0, 'min': 800.0, 'max': 6700.0}, {'current': 3200.0, 'min': 800.0, 'max': 6700.0}, {'current': 3200.0, 'min': 800.0, 'max': 6700.0}, {'current': 3200.0, 'min': 800.0, 'max': 6700.0}, {'current': 3200.0, 'min': 800.0, 'max': 6500.0}, {'current': 3200.0, 'min': 800.0, 'max': 6500.0}, {'current': 3200.0, 'min': 800.0, 'max': 6500.0}, {'current': 3200.0, 'min': 800.0, 'max': 6500.0}, {'current': 3200.0, 'min': 800.0, 'max': 3900.0}, {'current': 3200.0, 'min': 800.0, 'max': 3900.0}, {'current': 3200.0, 'min': 800.0, 'max': 3900.0}, {'current': 3200.0, 'min': 800.0, 'max': 3900.0}, {'current': 3200.0, 'min': 800.0, 'max': 3900.0}, {'current': 3200.0, 'min': 800.0, 'max': 3900.0}, {'current': 3200.0, 'min': 800.0, 'max': 3900.0}, {'current': 3200.0, 'min': 800.0, 'max': 3900.0}], 'disk': {'total': 1832.2072448730469, 'used': 904.6627197265625}, 'gpu': 'NVIDIA GeForce RTX 3090', 'gpu_count': 2, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 3090', 'memory_total': 25438322688}, {'name': 'NVIDIA GeForce RTX 3090', 'memory_total': 25447170048}], 'memory': {'total': 62.61840057373047}}
+2022-11-24 14:56:05,462 INFO    HandlerThread:3498740 [system_monitor.py:probe():178] Finished collecting system info
+2022-11-24 14:56:05,463 INFO    HandlerThread:3498740 [system_monitor.py:probe():181] Publishing system info
+2022-11-24 14:56:05,463 DEBUG   HandlerThread:3498740 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2022-11-24 14:56:05,463 DEBUG   HandlerThread:3498740 [system_info.py:_save_pip():67] Saving pip packages done
+2022-11-24 14:56:05,463 DEBUG   HandlerThread:3498740 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2022-11-24 14:56:05,922 INFO    Thread-13 :3498740 [dir_watcher.py:_on_file_created():275] file/dir created: /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/files/wandb-summary.json
+2022-11-24 14:56:05,922 INFO    Thread-13 :3498740 [dir_watcher.py:_on_file_created():275] file/dir created: /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/files/requirements.txt
+2022-11-24 14:56:05,922 INFO    Thread-13 :3498740 [dir_watcher.py:_on_file_created():275] file/dir created: /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/files/conda-environment.yaml
+2022-11-24 14:56:09,065 DEBUG   HandlerThread:3498740 [system_info.py:_save_conda():86] Saving conda packages done
+2022-11-24 14:56:09,065 INFO    HandlerThread:3498740 [system_monitor.py:probe():183] Finished publishing system info
+2022-11-24 14:56:09,067 DEBUG   SenderThread:3498740 [sender.py:send():303] send: files
+2022-11-24 14:56:09,067 INFO    SenderThread:3498740 [sender.py:_save_file():1171] saving file wandb-metadata.json with policy now
+2022-11-24 14:56:09,069 DEBUG   HandlerThread:3498740 [handler.py:handle_request():139] handle_request: stop_status
+2022-11-24 14:56:09,069 DEBUG   SenderThread:3498740 [sender.py:send_request():317] send_request: stop_status
+2022-11-24 14:56:09,285 DEBUG   SenderThread:3498740 [sender.py:send():303] send: telemetry
+2022-11-24 14:56:09,288 DEBUG   SenderThread:3498740 [sender.py:send():303] send: exit
+2022-11-24 14:56:09,288 INFO    SenderThread:3498740 [sender.py:send_exit():442] handling exit code: 0
+2022-11-24 14:56:09,288 INFO    SenderThread:3498740 [sender.py:send_exit():444] handling runtime: 3
+2022-11-24 14:56:09,290 INFO    SenderThread:3498740 [sender.py:_save_file():1171] saving file wandb-summary.json with policy end
+2022-11-24 14:56:09,291 INFO    SenderThread:3498740 [sender.py:send_exit():450] send defer
+2022-11-24 14:56:09,291 DEBUG   HandlerThread:3498740 [handler.py:handle_request():139] handle_request: defer
+2022-11-24 14:56:09,292 INFO    HandlerThread:3498740 [handler.py:handle_request_defer():162] handle defer: 0
+2022-11-24 14:56:09,292 DEBUG   SenderThread:3498740 [sender.py:send_request():317] send_request: defer
+2022-11-24 14:56:09,293 INFO    SenderThread:3498740 [sender.py:send_request_defer():459] handle sender defer: 0
+2022-11-24 14:56:09,293 INFO    SenderThread:3498740 [sender.py:transition_state():463] send defer: 1
+2022-11-24 14:56:09,294 DEBUG   HandlerThread:3498740 [handler.py:handle_request():139] handle_request: defer
+2022-11-24 14:56:09,294 INFO    HandlerThread:3498740 [handler.py:handle_request_defer():162] handle defer: 1
+2022-11-24 14:56:09,295 INFO    HandlerThread:3498740 [system_monitor.py:finish():160] Stopping system monitor
+2022-11-24 14:56:09,295 DEBUG   SystemMonitor:3498740 [system_monitor.py:_start():130] Starting system metrics aggregation loop
+2022-11-24 14:56:09,298 DEBUG   SystemMonitor:3498740 [system_monitor.py:_start():137] Finished system metrics aggregation loop
+2022-11-24 14:56:09,298 DEBUG   SystemMonitor:3498740 [system_monitor.py:_start():141] Publishing last batch of metrics
+2022-11-24 14:56:09,298 INFO    HandlerThread:3498740 [interfaces.py:finish():173] Joined cpu
+2022-11-24 14:56:09,298 INFO    HandlerThread:3498740 [interfaces.py:finish():173] Joined disk
+2022-11-24 14:56:09,359 INFO    HandlerThread:3498740 [interfaces.py:finish():173] Joined gpu
+2022-11-24 14:56:09,359 INFO    HandlerThread:3498740 [interfaces.py:finish():173] Joined memory
+2022-11-24 14:56:09,359 INFO    HandlerThread:3498740 [interfaces.py:finish():173] Joined network
+2022-11-24 14:56:09,359 DEBUG   SenderThread:3498740 [sender.py:send_request():317] send_request: defer
+2022-11-24 14:56:09,359 INFO    SenderThread:3498740 [sender.py:send_request_defer():459] handle sender defer: 1
+2022-11-24 14:56:09,359 INFO    SenderThread:3498740 [sender.py:transition_state():463] send defer: 2
+2022-11-24 14:56:09,360 DEBUG   HandlerThread:3498740 [handler.py:handle_request():139] handle_request: defer
+2022-11-24 14:56:09,360 DEBUG   SenderThread:3498740 [sender.py:send():303] send: stats
+2022-11-24 14:56:09,360 INFO    HandlerThread:3498740 [handler.py:handle_request_defer():162] handle defer: 2
+2022-11-24 14:56:09,360 DEBUG   SenderThread:3498740 [sender.py:send_request():317] send_request: defer
+2022-11-24 14:56:09,360 INFO    SenderThread:3498740 [sender.py:send_request_defer():459] handle sender defer: 2
+2022-11-24 14:56:09,360 INFO    SenderThread:3498740 [sender.py:transition_state():463] send defer: 3
+2022-11-24 14:56:09,360 DEBUG   HandlerThread:3498740 [handler.py:handle_request():139] handle_request: defer
+2022-11-24 14:56:09,360 INFO    HandlerThread:3498740 [handler.py:handle_request_defer():162] handle defer: 3
+2022-11-24 14:56:09,360 DEBUG   SenderThread:3498740 [sender.py:send_request():317] send_request: defer
+2022-11-24 14:56:09,360 INFO    SenderThread:3498740 [sender.py:send_request_defer():459] handle sender defer: 3
+2022-11-24 14:56:09,360 INFO    SenderThread:3498740 [sender.py:transition_state():463] send defer: 4
+2022-11-24 14:56:09,360 DEBUG   HandlerThread:3498740 [handler.py:handle_request():139] handle_request: defer
+2022-11-24 14:56:09,360 INFO    HandlerThread:3498740 [handler.py:handle_request_defer():162] handle defer: 4
+2022-11-24 14:56:09,360 DEBUG   SenderThread:3498740 [sender.py:send():303] send: summary
+2022-11-24 14:56:09,361 INFO    SenderThread:3498740 [sender.py:_save_file():1171] saving file wandb-summary.json with policy end
+2022-11-24 14:56:09,361 DEBUG   SenderThread:3498740 [sender.py:send_request():317] send_request: defer
+2022-11-24 14:56:09,361 INFO    SenderThread:3498740 [sender.py:send_request_defer():459] handle sender defer: 4
+2022-11-24 14:56:09,361 INFO    SenderThread:3498740 [sender.py:transition_state():463] send defer: 5
+2022-11-24 14:56:09,361 DEBUG   HandlerThread:3498740 [handler.py:handle_request():139] handle_request: defer
+2022-11-24 14:56:09,361 INFO    HandlerThread:3498740 [handler.py:handle_request_defer():162] handle defer: 5
+2022-11-24 14:56:09,361 DEBUG   SenderThread:3498740 [sender.py:send_request():317] send_request: defer
+2022-11-24 14:56:09,361 INFO    SenderThread:3498740 [sender.py:send_request_defer():459] handle sender defer: 5
+2022-11-24 14:56:09,608 INFO    SenderThread:3498740 [sender.py:transition_state():463] send defer: 6
+2022-11-24 14:56:09,608 DEBUG   HandlerThread:3498740 [handler.py:handle_request():139] handle_request: defer
+2022-11-24 14:56:09,608 INFO    HandlerThread:3498740 [handler.py:handle_request_defer():162] handle defer: 6
+2022-11-24 14:56:09,609 DEBUG   SenderThread:3498740 [sender.py:send_request():317] send_request: defer
+2022-11-24 14:56:09,609 INFO    SenderThread:3498740 [sender.py:send_request_defer():459] handle sender defer: 6
+2022-11-24 14:56:09,735 INFO    Thread-16 :3498740 [upload_job.py:push():143] Uploaded file /tmp/tmpb7d77uo8wandb/27sgm1de-wandb-metadata.json
+2022-11-24 14:56:09,922 INFO    Thread-13 :3498740 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/files/wandb-summary.json
+2022-11-24 14:56:09,922 INFO    Thread-13 :3498740 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/files/conda-environment.yaml
+2022-11-24 14:56:09,923 INFO    Thread-13 :3498740 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/files/config.yaml
+2022-11-24 14:56:09,923 INFO    Thread-13 :3498740 [dir_watcher.py:_on_file_created():275] file/dir created: /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/files/output.log
+2022-11-24 14:56:09,923 INFO    Thread-13 :3498740 [dir_watcher.py:_on_file_created():275] file/dir created: /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/files/wandb-metadata.json
+2022-11-24 14:56:10,163 DEBUG   HandlerThread:3498740 [handler.py:handle_request():139] handle_request: poll_exit
+2022-11-24 14:56:11,294 INFO    SenderThread:3498740 [sender.py:transition_state():463] send defer: 7
+2022-11-24 14:56:11,294 DEBUG   SenderThread:3498740 [sender.py:send_request():317] send_request: poll_exit
+2022-11-24 14:56:11,295 DEBUG   HandlerThread:3498740 [handler.py:handle_request():139] handle_request: defer
+2022-11-24 14:56:11,295 INFO    HandlerThread:3498740 [handler.py:handle_request_defer():162] handle defer: 7
+2022-11-24 14:56:11,296 DEBUG   SenderThread:3498740 [sender.py:send_request():317] send_request: defer
+2022-11-24 14:56:11,296 INFO    SenderThread:3498740 [sender.py:send_request_defer():459] handle sender defer: 7
+2022-11-24 14:56:11,296 INFO    SenderThread:3498740 [dir_watcher.py:finish():362] shutting down directory watcher
+2022-11-24 14:56:11,923 INFO    Thread-13 :3498740 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/files/output.log
+2022-11-24 14:56:11,924 INFO    SenderThread:3498740 [dir_watcher.py:finish():392] scan: /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/files
+2022-11-24 14:56:11,924 INFO    SenderThread:3498740 [dir_watcher.py:finish():406] scan save: /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/files/output.log output.log
+2022-11-24 14:56:11,924 INFO    SenderThread:3498740 [dir_watcher.py:finish():406] scan save: /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/files/requirements.txt requirements.txt
+2022-11-24 14:56:11,924 INFO    SenderThread:3498740 [dir_watcher.py:finish():406] scan save: /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/files/config.yaml config.yaml
+2022-11-24 14:56:11,924 INFO    SenderThread:3498740 [dir_watcher.py:finish():406] scan save: /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/files/wandb-metadata.json wandb-metadata.json
+2022-11-24 14:56:11,924 INFO    SenderThread:3498740 [dir_watcher.py:finish():406] scan save: /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/files/wandb-summary.json wandb-summary.json
+2022-11-24 14:56:11,925 INFO    SenderThread:3498740 [dir_watcher.py:finish():406] scan save: /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/files/conda-environment.yaml conda-environment.yaml
+2022-11-24 14:56:11,928 INFO    SenderThread:3498740 [sender.py:transition_state():463] send defer: 8
+2022-11-24 14:56:11,944 DEBUG   HandlerThread:3498740 [handler.py:handle_request():139] handle_request: defer
+2022-11-24 14:56:11,944 INFO    HandlerThread:3498740 [handler.py:handle_request_defer():162] handle defer: 8
+2022-11-24 14:56:11,945 DEBUG   SenderThread:3498740 [sender.py:send_request():317] send_request: defer
+2022-11-24 14:56:11,945 INFO    SenderThread:3498740 [sender.py:send_request_defer():459] handle sender defer: 8
+2022-11-24 14:56:11,945 INFO    SenderThread:3498740 [file_pusher.py:finish():168] shutting down file pusher
+2022-11-24 14:56:12,553 INFO    Thread-18 :3498740 [upload_job.py:push():143] Uploaded file /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/files/requirements.txt
+2022-11-24 14:56:12,564 INFO    Thread-20 :3498740 [upload_job.py:push():143] Uploaded file /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/files/wandb-summary.json
+2022-11-24 14:56:12,569 INFO    Thread-21 :3498740 [upload_job.py:push():143] Uploaded file /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/files/conda-environment.yaml
+2022-11-24 14:56:12,571 INFO    Thread-17 :3498740 [upload_job.py:push():143] Uploaded file /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/files/output.log
+2022-11-24 14:56:12,593 INFO    Thread-19 :3498740 [upload_job.py:push():143] Uploaded file /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/files/config.yaml
+2022-11-24 14:56:12,793 INFO    Thread-12 :3498740 [sender.py:transition_state():463] send defer: 9
+2022-11-24 14:56:12,793 DEBUG   HandlerThread:3498740 [handler.py:handle_request():139] handle_request: defer
+2022-11-24 14:56:12,793 INFO    HandlerThread:3498740 [handler.py:handle_request_defer():162] handle defer: 9
+2022-11-24 14:56:12,794 DEBUG   SenderThread:3498740 [sender.py:send_request():317] send_request: defer
+2022-11-24 14:56:12,794 INFO    SenderThread:3498740 [sender.py:send_request_defer():459] handle sender defer: 9
+2022-11-24 14:56:12,794 INFO    SenderThread:3498740 [file_pusher.py:join():173] waiting for file pusher
+2022-11-24 14:56:12,794 INFO    SenderThread:3498740 [sender.py:transition_state():463] send defer: 10
+2022-11-24 14:56:12,794 DEBUG   HandlerThread:3498740 [handler.py:handle_request():139] handle_request: defer
+2022-11-24 14:56:12,794 INFO    HandlerThread:3498740 [handler.py:handle_request_defer():162] handle defer: 10
+2022-11-24 14:56:12,794 DEBUG   SenderThread:3498740 [sender.py:send_request():317] send_request: defer
+2022-11-24 14:56:12,794 INFO    SenderThread:3498740 [sender.py:send_request_defer():459] handle sender defer: 10
+2022-11-24 14:56:13,423 INFO    SenderThread:3498740 [sender.py:transition_state():463] send defer: 11
+2022-11-24 14:56:13,424 DEBUG   HandlerThread:3498740 [handler.py:handle_request():139] handle_request: defer
+2022-11-24 14:56:13,424 INFO    HandlerThread:3498740 [handler.py:handle_request_defer():162] handle defer: 11
+2022-11-24 14:56:13,424 DEBUG   SenderThread:3498740 [sender.py:send_request():317] send_request: defer
+2022-11-24 14:56:13,425 INFO    SenderThread:3498740 [sender.py:send_request_defer():459] handle sender defer: 11
+2022-11-24 14:56:13,425 INFO    SenderThread:3498740 [sender.py:transition_state():463] send defer: 12
+2022-11-24 14:56:13,426 DEBUG   HandlerThread:3498740 [handler.py:handle_request():139] handle_request: defer
+2022-11-24 14:56:13,426 DEBUG   SenderThread:3498740 [sender.py:send():303] send: final
+2022-11-24 14:56:13,426 INFO    HandlerThread:3498740 [handler.py:handle_request_defer():162] handle defer: 12
+2022-11-24 14:56:13,426 DEBUG   SenderThread:3498740 [sender.py:send():303] send: footer
+2022-11-24 14:56:13,426 DEBUG   SenderThread:3498740 [sender.py:send_request():317] send_request: defer
+2022-11-24 14:56:13,426 INFO    SenderThread:3498740 [sender.py:send_request_defer():459] handle sender defer: 12
+2022-11-24 14:56:13,428 DEBUG   HandlerThread:3498740 [handler.py:handle_request():139] handle_request: poll_exit
+2022-11-24 14:56:13,428 DEBUG   SenderThread:3498740 [sender.py:send_request():317] send_request: poll_exit
+2022-11-24 14:56:13,429 DEBUG   HandlerThread:3498740 [handler.py:handle_request():139] handle_request: server_info
+2022-11-24 14:56:13,430 DEBUG   HandlerThread:3498740 [handler.py:handle_request():139] handle_request: get_summary
+2022-11-24 14:56:13,430 DEBUG   SenderThread:3498740 [sender.py:send_request():317] send_request: server_info
+2022-11-24 14:56:13,434 DEBUG   HandlerThread:3498740 [handler.py:handle_request():139] handle_request: sampled_history
+2022-11-24 14:56:13,869 INFO    MainThread:3498740 [wandb_run.py:_footer_history_summary_info():3377] rendering history
+2022-11-24 14:56:13,869 INFO    MainThread:3498740 [wandb_run.py:_footer_history_summary_info():3409] rendering summary
+2022-11-24 14:56:13,869 INFO    MainThread:3498740 [wandb_run.py:_footer_sync_info():3333] logging synced files
+2022-11-24 14:56:13,870 DEBUG   HandlerThread:3498740 [handler.py:handle_request():139] handle_request: shutdown
+2022-11-24 14:56:13,870 INFO    HandlerThread:3498740 [handler.py:finish():814] shutting down handler
+2022-11-24 14:56:14,426 INFO    WriterThread:3498740 [datastore.py:close():279] close: /home/gwan/Documents/research/quant/ML_Finance/wandb/run-20221124_145604-1nhuyk6a/run-1nhuyk6a.wandb
+2022-11-24 14:56:14,868 INFO    SenderThread:3498740 [sender.py:finish():1331] shutting down sender
+2022-11-24 14:56:14,869 INFO    SenderThread:3498740 [file_pusher.py:finish():168] shutting down file pusher
+2022-11-24 14:56:14,869 INFO    SenderThread:3498740 [file_pusher.py:join():173] waiting for file pusher
+2022-11-24 14:56:14,873 INFO    MainThread:3498740 [internal.py:handle_exit():78] Internal process exited
