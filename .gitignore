@@ -1,2 +1,4 @@
 /wandb/
 .idea/
+/experiments/
+/model/arch/__pycache__/

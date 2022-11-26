@@ -1,22 +1,15 @@
-from qlib.data.dataset import DatasetH
-from qlib.data.dataset.handler import DataHandlerLP
-from torch.utils.data import DataLoader
-from dataset.dataset import Dataset
+from qlib.data.dataset import DatasetH, TSDatasetH
+from dataset.dataset import create_dataloder_H, create_dataloder_TS
 
-def create_loaders(handler, segments, opt):
+def create_loaders(opt):
 
-    dataset = DatasetH(handler, segments)
-
-    df_train, df_valid, df_test = dataset.prepare(["train", "valid", "test"], col_set=["feature", "label"],
-                                                  data_key=DataHandlerLP.DK_L, )
-
-    train_set = Dataset(df_train["feature"], df_train["label"])
-    train_loader = DataLoader(train_set, batch_size=opt["train"]["batch_size"], shuffle=opt["train"]["shuffle"])
-
-    val_set = Dataset(df_valid["feature"], df_valid["label"])
-    val_loader = DataLoader(val_set, batch_size=opt["val"]["batch_size"])
-
-    test_set = Dataset(df_test["feature"], df_test["label"])
-    test_loader = DataLoader(test_set, batch_size=opt["test"]["batch_size"])
+    if opt['class'] == 'DatasetH':
+        dataset = DatasetH(**opt['kwargs'])
+        train_loader, val_loader, test_loader = create_dataloder_H(dataset, opt['dataloader'])
+    elif opt['class'] == 'TSDatasetH':
+        dataset = TSDatasetH(**opt['kwargs'])
+        train_loader, val_loader, test_loader = create_dataloder_TS(dataset, opt['dataloader'])
+    else:
+        raise RuntimeError("No other data classes.")
 
     return train_loader, val_loader, test_loader

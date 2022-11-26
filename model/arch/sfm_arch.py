@@ -4,7 +4,7 @@ import torch.nn.functional as F
 import torch.nn.init as init
 import numpy as np
 
-class SFM_Model(nn.Module):
+class Model(nn.Module):
     def __init__(
         self,
         d_feat=6,
@@ -13,7 +13,6 @@ class SFM_Model(nn.Module):
         hidden_size=64,
         dropout_W=0.0,
         dropout_U=0.0,
-        device="cpu",
     ):
         super().__init__()
 
@@ -21,7 +20,7 @@ class SFM_Model(nn.Module):
         self.output_dim = output_dim
         self.freq_dim = freq_dim
         self.hidden_dim = hidden_size
-        self.device = device
+        # self.device = device
 
         self.W_i = nn.Parameter(init.xavier_uniform_(torch.empty((self.input_dim, self.hidden_dim))))
         self.U_i = nn.Parameter(init.orthogonal_(torch.empty(self.hidden_dim, self.hidden_dim)))
@@ -59,7 +58,9 @@ class SFM_Model(nn.Module):
     def forward(self, input):
         input = input.reshape(len(input), self.input_dim, -1)  # [N, F, T]
         input = input.permute(0, 2, 1)  # [N, T, F]
-        time_step = input.shape[1]
+        b, time_step, f = input.size()
+
+
 
         for ts in range(time_step):
             x = input[:, ts, :]
@@ -118,16 +119,20 @@ class SFM_Model(nn.Module):
 
             self.states = [p, h, S_re, S_im, time, None, None, None]
         self.states = []
-        return self.fc_out(p).squeeze()
+        fc_out = self.fc_out(p)
+        fc_out = fc_out.reshape(b, -1)
+        out = fc_out.squeeze(1)
+        return out
 
     def init_states(self, x):
-        reducer_f = torch.zeros((self.hidden_dim, self.freq_dim)).to(self.device)
-        reducer_p = torch.zeros((self.hidden_dim, self.output_dim)).to(self.device)
+        device = x.device
+        reducer_f = torch.zeros((self.hidden_dim, self.freq_dim)).to(device)
+        reducer_p = torch.zeros((self.hidden_dim, self.output_dim)).to(device)
 
-        init_state_h = torch.zeros(self.hidden_dim).to(self.device)
+        init_state_h = torch.zeros(self.hidden_dim).to(device)
         init_state_p = torch.matmul(init_state_h, reducer_p)
 
-        init_state = torch.zeros_like(init_state_h).to(self.device)
+        init_state = torch.zeros_like(init_state_h).to(device)
         init_freq = torch.matmul(init_state_h, reducer_f)
 
         init_state = torch.reshape(init_state, (-1, self.hidden_dim, 1))
@@ -136,7 +141,7 @@ class SFM_Model(nn.Module):
         init_state_S_re = init_state * init_freq
         init_state_S_im = init_state * init_freq
 
-        init_state_time = torch.tensor(0).to(self.device)
+        init_state_time = torch.tensor(0).to(device)
 
         self.states = [
             init_state_p,
@@ -150,10 +155,11 @@ class SFM_Model(nn.Module):
         ]
 
     def get_constants(self, x):
+        device = x.device
         constants = []
-        constants.append([torch.tensor(1.0).to(self.device) for _ in range(6)])
-        constants.append([torch.tensor(1.0).to(self.device) for _ in range(7)])
+        constants.append([torch.tensor(1.0).to(device) for _ in range(6)])
+        constants.append([torch.tensor(1.0).to(device) for _ in range(7)])
         array = np.array([float(ii) / self.freq_dim for ii in range(self.freq_dim)])
-        constants.append(torch.tensor(array).to(self.device))
+        constants.append(torch.tensor(array).to(device))
 
         self.states[5:] = constants

@@ -17,7 +17,7 @@ import qlib
 from qlib.config import REG_US, REG_CN
 
 parser = argparse.ArgumentParser(description='Train')
-parser.add_argument('--option', default='./options/train/LSTM/train_LSTM.yml', type=str, help='model name')
+parser.add_argument('--option', default='./options/train/LSTM/train_LSTM_Alpha360.yml', type=str, help='model name')
 
 ## parse the args
 args = parser.parse_args()
@@ -29,7 +29,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = str(opt['id_gpu'])
 provider_uri = opt['provider_uri'] # target_dir
 qlib.init(provider_uri=provider_uri, region=REG_CN)
 
-def train(train_loader, model, optimizer):
+def train(train_loader, model, optimizer, ts_type=False):
     batch_loss = AverageMeter()
 
     model.train()
@@ -39,10 +39,13 @@ def train(train_loader, model, optimizer):
     loss_criterion = loss_criterion.cuda()
 
     for train_pairs in train_loader:
-        input_var, target_var = train_pairs[0], train_pairs[1]
+        if ts_type:
+            input_var, target_var = train_pairs[:, :, 0:-1], train_pairs[:, -1, -1]
+        else:
+            input_var, target_var = train_pairs[0], train_pairs[1]
 
-        input_var = input_var.cuda()
-        target_var = target_var.cuda()
+        input_var = input_var.float().cuda()
+        target_var = target_var.float().cuda()
         output = model(input_var)
 
         loss = loss_criterion(output, target_var)
@@ -55,17 +58,21 @@ def train(train_loader, model, optimizer):
     return batch_loss.avg
 
 
-def valid(valid_loader, model):
+def valid(valid_loader, model, ts_type=False):
 
     model.eval()
     losses = []
     preds = []
 
     for val_pairs in valid_loader:
-        input_var, target_var, time_index, stock_index = val_pairs[0], val_pairs[1], val_pairs[2], val_pairs[3]
-        time_index = pd.to_datetime(time_index, format='%Y-%m-%d')
-        input_var = input_var.cuda()
-        target_var = target_var.cuda()
+        if ts_type:
+            input_var, target_var = val_pairs[:, :, 0:-1], val_pairs[:, -1, -1]
+        else:
+            input_var, target_var, time_index, stock_index = val_pairs[0], val_pairs[1], val_pairs[2], val_pairs[3]
+            time_index = pd.to_datetime(time_index, format='%Y-%m-%d')
+
+        input_var = input_var.float().cuda()
+        target_var = target_var.float().cuda()
         with torch.no_grad():
             pred = model(input_var)
             loss = F.mse_loss(pred, target_var)
@@ -98,14 +105,11 @@ def main():
         wandb.init(project=opt['wandb']['project'], entity=opt['wandb']['entity'], name=name)
 
     ### create dataset
-    handler = opt['handler']
-    segments = opt['segments']
-
-    train_loader, val_loader, test_loader = create_loaders(handler, segments, opt["dataset"])
+    train_loader, val_loader, test_loader = create_loaders(opt["dataset"])
 
     ## load the model
     model_file = '.arch' + '.' + opt['model']['name'] + '_arch'
-    model = importlib.import_module(model_file, package='model').Model()
+    model = importlib.import_module(model_file, package='model').Model(**opt['model']['kwargs'])
 
     # device_ids = opt['device_ids']
     if torch.cuda.is_available():
@@ -146,9 +150,9 @@ def main():
     os.makedirs(save_dir)
 
     ## set the log
-    log_path = save_dir + '/record.log'
+    log_path = save_dir + '/train_record.log'
     logger = get_logger(log_path)
-    logger.info('Star the training')
+    logger.info('Start the training')
     logger.info('the learning rate is {}'.format(opt['train']['optim_g']['lr']))
     logger.info('the total number of epoches is {}'.format(opt['train']['total_epoch']))
 
@@ -160,15 +164,14 @@ def main():
         }
 
     ## train the model
-    for epoch in range(cur_epoch, opt['train']['total_epoch'] + 1):
-        train_loss = train(train_loader, model, optimizer)
+    for epoch in range(cur_epoch, opt['train']['total_epoch']):
+        train_loss = train(train_loader, model, optimizer, opt['model']['ts_type'])
         scheduler.step()
 
         # validation
         if (epoch + 1) % opt["val"]["val_freq"] == 0:
-            val_metric_loss = valid(val_loader, model)
+            val_metric_loss = valid(val_loader, model, opt['model']['ts_type'])
             val_loss = val_metric_loss["loss"]
-            # val_ic = val_metric_loss['ic']
 
             if opt['wandb']['use']:
                 wandb.log(
@@ -176,9 +179,9 @@ def main():
                         'val_loss': val_metric_loss["loss"],
                         'IC': val_metric_loss["ic"],
                         'Rank_IC': val_metric_loss["rank_ic"],
-                        'Precision@1': val_metric_loss["precision"]["1"],
-                        'Precision@3': val_metric_loss["precision"]["3"],
-                        'Precision@5': val_metric_loss["precision"]["5"],
+                        'Precision@1': val_metric_loss["precision"][1],
+                        'Precision@3': val_metric_loss["precision"][3],
+                        'Precision@5': val_metric_loss["precision"][5],
                     }
                 )
 
@@ -190,21 +193,21 @@ def main():
                     'state_dict': model.state_dict(),
                     'optimizer': optimizer.state_dict(),
                     'scheduler': scheduler.state_dict()},
-                    os.path.join(save_dir, 'best_model.pth.tar'))
+                    os.path.join(save_dir, 'best_model.pt'))
 
 
             logger.info("the current epoch is {}, the training loss is {:.4f}, the validation loss is {:.4f}".format((epoch + 1), train_loss, val_metric_loss["loss"]))
             logger.info("the IC is {:.6f}, the rank IC is {:.6f}, the precision@3 is {:.6f}".format(val_metric_loss["ic"], val_metric_loss["rank_ic"], val_metric_loss["precision"][3]))
 
     ## inference
-    pretrain_path = os.path.join(save_dir, 'best_model.pth.tar')
+    pretrain_path = os.path.join(save_dir, 'best_model.pt')
     model_info = torch.load(pretrain_path)
     print('==> loading the best model:\n')
     model.load_state_dict(model_info['state_dict'])
 
     test_metric_loss = valid(test_loader, model)
     logger.info("the testing loss is {:.4f}".format(test_metric_loss["loss"]))
-    logger.info("the IC is {}, the rank IC is {}, the precision@3 is {}".format(test_metric_loss["ic"], test_metric_loss["rank_ic"], test_metric_loss["precision"]['3']))
+    logger.info("the IC is {:.6f}, the rank IC is {:.6f}, the precision@3 is {:.6f}".format(test_metric_loss["ic"], test_metric_loss["rank_ic"], test_metric_loss["precision"][3]))
 
 if __name__ == '__main__':
     main()

@@ -2,7 +2,7 @@ import torch.nn as nn
 
 class Model(nn.Module):
     def __init__(self, d_feat=6, hidden_size=64, num_layers=2, dropout=0.0):
-        super().__init__()
+        super(Model, self).__init__()
 
         self.rnn = nn.LSTM(
             input_size=d_feat,
@@ -16,11 +16,9 @@ class Model(nn.Module):
         self.d_feat = d_feat
 
     def forward(self, x):
-        # For the type of dataset is DatasetH, the size of x is [N, F*T]
-        b, f = x.size()
-        x = x.reshape(b, self.d_feat, -1)  # [N, F, T]
-        x = x.permute(0, 2, 1)  # [N, T, F]
+        # For the type of dataset is TSDataset, the size of x is [N, T, F]
+        N, T, F = x.size()
         out, _ = self.rnn(x)
         fc_out = self.fc_out(out[:, -1, :])
-        out = fc_out.reshape(b, -1).squeeze(dim=1)
+        out = fc_out.reshape(N, -1).squeeze(dim=1)
         return out
