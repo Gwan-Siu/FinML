@@ -1,0 +1,99 @@
+## configuration setting
+name: ALTSM_Alpha360
+id_gpu: 8
+seed: 123
+provider_uri: /raid/gwan/datasets/FinML/cn_data_v2/qlib_data
+market: &market csi300_new
+#device_ids: 0,1
+
+# handler setting:
+handler_configs: &handler_configs
+  start_time: 2007-01-01
+  end_time: 2022-10-28
+  fit_start_time: 2007-01-01
+  fit_end_time: 2020-12-31
+  instruments: *market
+  infer_processors:
+    - class: RobustZScoreNorm
+      kwargs:
+        fields_group: feature
+        clip_outlier: True
+    - class: Fillna
+      kwargs:
+        fields_group: feature
+  learn_processors:
+    - class: DropnaLabel
+    - class: CSRankNorm
+      kwargs:
+        fields_group: label
+  label: ['Ref($close, -1) / $close - 1']
+
+# dataset settings
+dataset:
+  class: DatasetH
+  kwargs:
+    handler:
+      class: Alpha360
+      module_path: qlib.contrib.data.handler
+      kwargs: *handler_configs
+    segments:
+      train: [2007-01-01, 2020-12-31]
+      valid: [2021-01-01, 2021-12-31]
+      test: [2022-01-01, 2022-10-28]
+
+  # dataset settings
+  dataloader:
+    train:
+      batch_size: 1200
+      shuffle: true
+
+    val:
+      batch_size: 1
+      shuffle: true
+
+    test:
+      batch_size: 1
+      shuffle: true
+
+model:
+  name: alstm
+  ts_type: false
+  kwargs:
+    d_feat: 6
+    hidden_size: 64
+    num_layers: 2
+    dropout: 0.0
+
+# save the path to save the model
+path:
+  pretrain_net: ~
+  resume: 0  # 0: false, 1: true
+
+# training settings
+# training settings
+train:
+  ema_decay: 0.999
+  optim_g:
+    type: Adam
+    lr: !!float 1e-2
+    weight_decay: 0
+    betas: [0.9, 0.99]
+
+  scheduler:
+    periods: [150, 300]
+    restart_weights: [1, 0.1]
+    eta_min: !!float 1e-6
+
+  total_epoch: 100
+  loss: mse
+
+# validation settings
+val:
+  val_freq: 1.0
+  crop: False
+
+wandb:
+  use: true
+  project: ML_Finance
+  entity: gwansiu
+
