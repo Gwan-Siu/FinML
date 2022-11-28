@@ -4,14 +4,14 @@ FinML
 
 1. This project is dependent on the [Qlib](https://github.com/microsoft/qlib), so you need to install the Qlib first. Please follow the steps to install from source.
 
-1.1 Install the dependencies
+- 1.1 Install the dependencies
 
  ```bash
   pip install numpy
   pip install --upgrade  cython
  ```
 
-1.2 Clone the repository and install ``Qlib`` as follows.
+- 1.2 Clone the repository and install ``Qlib`` as follows.
 
 ```bash
   git clone https://github.com/microsoft/qlib.git && cd qlib
@@ -34,6 +34,7 @@ cd qlib/scripts/data_collector/yahoo/
 2. Download data to csv: `python scripts/data_collector/yahoo/collector.py download_data`.
 
 - examples:
+
           ```bash
           # cn 1d data
           python collector.py download_data --source_dir ~/.qlib/stock_data/source/cn_data --start 2020-01-01 --end 2020-12-31 --delay 1 --interval 1d --region CN
@@ -58,6 +59,7 @@ cd qlib/scripts/data_collector/yahoo/
 3. Normalize data: `python scripts/data_collector/yahoo/collector.py normalize_data`
 
 - examples:
+
         ```bash
         # normalize 1d cn
         python collector.py normalize_data --source_dir ~/.qlib/stock_data/source/cn_data --normalize_dir ~/.qlib/stock_data/source/cn_1d_nor --region CN --interval 1d
