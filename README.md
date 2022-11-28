@@ -79,12 +79,13 @@ python collector.py normalize_data --qlib_data_1d_dir ~/.qlib/qlib_data/br_data 
 4. dump data: `python scripts/dump_bin.py dump_all`
 
 - examples:
-       ```bash
-       # dump 1d cn
-       python dump_bin.py dump_all --csv_path ~/.qlib/stock_data/source/cn_1d_nor --qlib_dir ~/.qlib/qlib_data/cn_data --freq day --exclude_fields date,symbol
-       # dump 1min cn
-       python dump_bin.py dump_all --csv_path ~/.qlib/stock_data/source/cn_1min_nor --qlib_dir ~/.qlib/qlib_data/cn_data_1min --freq 1min --exclude_fields date,symbol
-       ```
+
+```bash
+# dump 1d cn
+python dump_bin.py dump_all --csv_path ~/.qlib/stock_data/source/cn_1d_nor --qlib_dir ~/.qlib/qlib_data/cn_data --freq day --exclude_fields date,symbol
+# dump 1min cn
+python dump_bin.py dump_all --csv_path ~/.qlib/stock_data/source/cn_1min_nor --qlib_dir ~/.qlib/qlib_data/cn_data_1min --freq 1min --exclude_fields date,symbol
+```
 
 ### Set up the deep learning models.
 
